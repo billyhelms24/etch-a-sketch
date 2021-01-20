@@ -6,13 +6,12 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    height: 100vw;
-    width: 100vw;
+    border: 1px solid black;
 }
 
 .grid-item {
-    border: 1px solid gray;
     text-align: center;
+    padding: 20px;
 }
 
 .grid-item:hover {
