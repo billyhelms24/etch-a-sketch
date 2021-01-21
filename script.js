@@ -14,10 +14,10 @@ function createGrid(base) {
 }
 
 function removePixels() {
-    const items = document.querySelectorAll('.grid-item');
-    for (let i = 0 ; i < items.length ; i++) {
-        items[i].remove();
-    }
+  const items = document.querySelectorAll(".grid-item");
+  for (let i = 0; i < items.length; i++) {
+    items[i].remove();
+  }
 }
 
 function changeColor(e) {
@@ -25,10 +25,13 @@ function changeColor(e) {
 }
 
 function resetGrid() {
-  console.log("reset");
-  removePixels();
   const userInput = prompt("What base to use for sizing grid? (1-100)");
-  createGrid(userInput);
+  if (userInput >= 1 || userInput <= 100) {
+    removePixels();
+    createGrid(userInput);
+  } else {
+    alert("Not a valid entry. Try again with a number from 1 to 100.");
+  }
 }
 
 createGrid(4);
