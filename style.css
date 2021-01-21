@@ -1,12 +1,27 @@
 * {
     margin: 0;
     padding: 0;
+    text-align: center;
+}
+
+h1 {
+    margin: auto;
+    padding: 20px;
+}
+
+button {
+    margin: auto;
+    padding: 20px;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
     border: 1px solid black;
+    max-width: 500px;
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .grid-item {
@@ -15,5 +30,9 @@
 }
 
 .grid-item:hover {
+    background-color: black;
+}
+
+.hovered {
     background-color: black;
 }

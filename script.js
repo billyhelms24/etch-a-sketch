@@ -6,6 +6,7 @@ function createGrid() {
         const item = document.createElement('div')
         item.textContent = " "
         item.classList.add("grid-item");
+        item.addEventListener("mouseover", changeColor)
         grid.appendChild(item);
     };
 
@@ -13,3 +14,7 @@ function createGrid() {
 
     body.appendChild(grid);
 };
+
+function changeColor(e) {
+    e.target.classList.add("hovered");
+}
