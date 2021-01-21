@@ -26,7 +26,7 @@ function changeColor(e) {
 
 function resetGrid() {
   const userInput = prompt("What base to use for sizing grid? (1-100)");
-  if (userInput >= 1 || userInput <= 100) {
+  if (userInput >= 1 && userInput <= 100) {
     removePixels();
     createGrid(userInput);
   } else {
