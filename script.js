@@ -1,24 +1,24 @@
 const resetBtn = document.querySelector("button");
 resetBtn.addEventListener("click", resetGrid);
-const grid = document.createElement("div");
+const grid = document.querySelector(".grid-container");
 const body = document.querySelector("body");
 
 function createGrid(base) {
+  grid.style.gridTemplate = `repeat(${base} , 1fr) / repeat(${base} , 1fr)`;
   for (let i = 0; i < base ** 2; i++) {
     const item = document.createElement("div");
-    item.textContent = " ";
     item.classList.add("grid-item");
     item.addEventListener("mouseover", changeColor);
     grid.appendChild(item);
   }
-
-  grid.classList.add("grid-container");
-
-  body.appendChild(grid);
 }
 
-function removeGrid() {
-  grid.remove();
+function removePixels() {
+    const items = document.querySelectorAll('.grid-item');
+    for (let i = 0 ; i < items.length ; i++) {
+        items[i].remove();
+        console.log(items);
+    }
 }
 
 function changeColor(e) {
@@ -27,8 +27,8 @@ function changeColor(e) {
 
 function resetGrid() {
   console.log("reset");
-  removeGrid();
-  const userInput = prompt("What size grid? (1-1000)");
+  removePixels();
+  const userInput = prompt("What base to use for sizing grid? (1-100)");
   createGrid(userInput);
 }
 
