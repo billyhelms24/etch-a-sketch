@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Sketch</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Etch-a-Sketch</title>
 
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <h1>Etch-a-Sketch</h1>
-    <button class="reset">Reset</button>
-    <div class="grid-container"></div>
-    <script src="./script.js"></script>
-</body>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <h1>Etch-a-Sketch</h1>
+
+        <button class="clear">Clear Grid</button>
+        <input type="color" value="#000000" id="colorPicker"></input>
+        <div class="slide-container">
+            <input
+                type="range"
+                min="1"
+                max="99"
+                value="10"
+                class="range-slider"
+            />
+            <label id="rangeSliderLabel" for="slider">10</label>
+            <button class="resize">Resize Grid</button>
+        </div>
+        <div class="canvas"></div>
+        <script src="./script.js"></script>
+    </body>
 </html>

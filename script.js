@@ -1,37 +1,70 @@
-const resetBtn = document.querySelector("button");
-resetBtn.addEventListener("click", resetGrid);
-const grid = document.querySelector(".grid-container");
-const body = document.querySelector("body");
+const resetBtn = document.querySelector(".resize");
+const clearBtn = document.querySelector(".clear");
+const rangeSlider = document.querySelector(".range-slider");
+const rangeSliderLabel = document.querySelector("#rangeSliderLabel");
+const canvas = document.querySelector(".canvas");
+const colorPicker = document.querySelector("#colorPicker");
+let isPaused = false;
+let paintColor = "#000000";
 
-function createGrid(base) {
-  grid.style.gridTemplate = `repeat(${base} , 1fr) / repeat(${base} , 1fr)`;
-  for (let i = 0; i < base ** 2; i++) {
-    const item = document.createElement("div");
-    item.classList.add("grid-item");
-    item.addEventListener("mouseover", changeColor);
-    grid.appendChild(item);
-  }
+resetBtn.addEventListener("click", resetCanvas);
+clearBtn.addEventListener("click", clearCanvas);
+rangeSlider.addEventListener("change", getSliderValue);
+colorPicker.addEventListener("change", changeColor);
+
+function changeColor() {
+    paintColor = colorPicker.value;
+}
+
+function getSliderValue() {
+    rangeSliderLabel.innerHTML = rangeSlider.value;
+}
+
+function createCanvas(base) {
+    canvas.style.gridTemplate = `repeat(${base} , 1fr) / repeat(${base} , 1fr)`;
+    for (let i = 0; i < base ** 2; i++) {
+        const pixel = document.createElement("div");
+        pixel.classList.add("pixel");
+        pixel.addEventListener("mouseenter", paint);
+        canvas.appendChild(pixel);
+    }
+}
+
+function clearCanvas() {
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach((i) => {
+        i.style.backgroundColor = "#ffffff";
+    });
 }
 
 function removePixels() {
-  const items = document.querySelectorAll(".grid-item");
-  for (let i = 0; i < items.length; i++) {
-    items[i].remove();
-  }
+    const pixels = document.querySelectorAll(".pixel");
+    for (let i = 0; i < pixels.length; i++) {
+        pixels[i].remove();
+    }
 }
 
-function changeColor(e) {
-  e.target.classList.add("hovered");
+function paint(pixel) {
+    if (!isPaused) {
+        pixel.target.style.backgroundColor = paintColor;
+    }
 }
 
-function resetGrid() {
-  const userInput = prompt("What base to use for sizing grid? (1-100)");
-  if (userInput >= 1 && userInput <= 100) {
+document.addEventListener("keydown", (event) => {
+    if (event.key === "k") {
+        isPaused = true;
+    }
+});
+
+document.addEventListener("keyup", (event) => {
+    if (event.key === "k") {
+        isPaused = false;
+    }
+});
+
+function resetCanvas() {
     removePixels();
-    createGrid(userInput);
-  } else {
-    alert("Not a valid entry. Try again with a number from 1 to 100.");
-  }
+    createCanvas(rangeSliderLabel.innerHTML);
 }
 
-createGrid(4);
+createCanvas(rangeSliderLabel.innerHTML);
