@@ -4,6 +4,7 @@ const rangeSlider = document.querySelector(".range-slider");
 const rangeSliderLabel = document.querySelector("#rangeSliderLabel");
 const canvas = document.querySelector(".canvas");
 const colorPicker = document.querySelector("#colorPicker");
+
 let isPaused = false;
 let paintColor = "#000000";
 
@@ -37,7 +38,7 @@ function clearCanvas() {
     });
 }
 
-function removePixels() {
+function deleteCanvas() {
     const pixels = document.querySelectorAll(".pixel");
     for (let i = 0; i < pixels.length; i++) {
         pixels[i].remove();
@@ -63,8 +64,26 @@ document.addEventListener("keyup", (event) => {
 });
 
 function resetCanvas() {
-    removePixels();
+    deleteCanvas();
     createCanvas(rangeSliderLabel.innerHTML);
 }
 
 createCanvas(rangeSliderLabel.innerHTML);
+
+// FACTORY FUNCTION PRACTICE... TO BE DELETED
+
+const Person = (name) => {
+    const sayName = () => console.log(`my name is ${name}`);
+    return { sayName };
+};
+
+const Nerd = (name) => {
+    const { sayName } = Person(name);
+    const doSomethingNerdy = () => console.log("nerd stuff");
+    return { sayName, doSomethingNerdy };
+};
+
+const personFactory = (name, age) => {
+    const sayHello = () => console.log("hello!");
+    return { name, age, sayHello };
+};

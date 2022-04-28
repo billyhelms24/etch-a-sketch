@@ -9,19 +9,20 @@
     </head>
     <body>
         <h1>Etch-a-Sketch</h1>
-
-        <button class="clear">Clear Grid</button>
-        <input type="color" value="#000000" id="colorPicker"></input>
-        <div class="slide-container">
-            <input
-                type="range"
-                min="1"
-                max="99"
-                value="10"
-                class="range-slider"
-            />
-            <label id="rangeSliderLabel" for="slider">10</label>
-            <button class="resize">Resize Grid</button>
+        <div class="level">
+            <button class="clear">Clear Grid</button>
+            <input type="color" value="#000000" id="colorPicker"></input>
+            <div class="slide-container">
+                <input
+                    type="range"
+                    min="1"
+                    max="99"
+                    value="10"
+                    class="range-slider"
+                />
+                <label id="rangeSliderLabel" for="slider">10</label>
+                <button class="resize">Resize Grid</button>
+            </div>
         </div>
         <div class="canvas"></div>
         <script src="./script.js"></script>
