@@ -4,4 +4,4 @@ Taking DOM Manipulation a step further by adding in loops and event listeners. T
 
 [**Live Preview**](https://billyhelms24.github.io/etch-a-sketch/)
 
-![etch-a-sketch.png](https://raw.githubusercontent.com/billyhelms24/git-test/main/screenshots/etch-a-sketch.png)
+![etch-a-sketch.png](https://raw.githubusercontent.com/billyhelms24/git-test/main/screenshots/etch-a-sketch.png?raw=true&v=2)
